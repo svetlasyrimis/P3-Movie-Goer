@@ -6,9 +6,8 @@ import Footer from './Footer'
 const Layout = (props) => (
     <div className='layout'>
         <div className='content'>
-            <Nav />
+            {/* <Nav /> */}
             <div className='main'>
-                <h1>Items App</h1>
                 {props.children}
             </div>
         </div>
