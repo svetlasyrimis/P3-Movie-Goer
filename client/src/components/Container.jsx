@@ -6,6 +6,10 @@ import Home from '../screens/Home'
 import Header from '../screens/Header'
 import Footer from './shared/Footer'
 import '../styles/Container.css'
+import React, { Component } from "react"
+import { getItems } from "../services/items"
+import Routes from "../routes"
+import Header from "../screens/Header"
 
 export default class Container extends Component {
   constructor(props) {
@@ -25,6 +29,10 @@ export default class Container extends Component {
     }
   }
 
+  // addMovie=async()=>{
+  //   const response = await getMovie(this.state.search, this.state.currentUser.id)
+  // }
+
   addItem = item => this.setState({ items: [...this.state.items, item] })
 
   setUser = user => this.setState({ user })
@@ -40,6 +48,9 @@ export default class Container extends Component {
       <>
         <Header user={user} />
         {display}
+    return (
+      <>
+        <Header user={user} />
         <main className="container">
           <Routes
             items={items}
@@ -50,6 +61,10 @@ export default class Container extends Component {
           />
         </main>
         <Footer />
+      </>
+    )
+  }
+}
       </>
     )
   }
