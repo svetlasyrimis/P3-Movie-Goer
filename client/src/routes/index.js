@@ -5,11 +5,15 @@ import Landing from '../screens/Landing'
 import SignIn from '../screens/SignIn'
 import SignOut from '../screens/SignOut'
 import SignUp from '../screens/SignUp'
+import ChangePassword from '../screens/ChangePassword'
 import Item from '../screens/Item'
 import Items from '../screens/Items'
+import MyMovies from '../screens/MyMovies'
 import ItemCreate from '../screens/ItemCreate'
 import ItemEdit from '../screens/ItemEdit'
 import AuthenticatedRoute from './AuthenticatedRoute'
+
+
 const Routes = ({ user, items, setUser, clearUser, addItem }) => (
     <Switch>
         <Route
@@ -36,6 +40,19 @@ const Routes = ({ user, items, setUser, clearUser, addItem }) => (
             user={user}
             render={props => <Items {...props} user={user} items={items} />}
         />
+        
+        <AuthenticatedRoute
+            exact
+            path="/my-movies"
+            user={user}
+            render={props => <MyMovies {...props} user={user} items={items} />}
+        />
+        {/* <AuthenticatedRoute
+            exact
+            path="/change-password"
+            user={user}
+            render={props => <ChangePassword {...props} />}
+        /> */}
         <AuthenticatedRoute
             exact
             path="/items/:id"

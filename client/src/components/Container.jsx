@@ -1,3 +1,11 @@
+import React, { Component } from 'react'
+import { getItems } from '../services/items'
+import Routes from '../routes'
+import Landing from '../screens/Landing'
+import Home from '../screens/Home'
+import Header from '../screens/Header'
+import Footer from './shared/Footer'
+import '../styles/Container.css'
 import React, { Component } from "react"
 import { getItems } from "../services/items"
 import Routes from "../routes"
@@ -33,6 +41,13 @@ export default class Container extends Component {
 
   render() {
     const { user, items } = this.state
+
+
+    const display = user ? Home : Landing
+    return (
+      <>
+        <Header user={user} />
+        {display}
     return (
       <>
         <Header user={user} />
@@ -45,6 +60,11 @@ export default class Container extends Component {
             clearUser={this.clearUser}
           />
         </main>
+        <Footer />
+      </>
+    )
+  }
+}
       </>
     )
   }
