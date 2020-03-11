@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,400,500,700&display=swap');
 
-body {
+/* body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat';
   overflow: hidden;
-  height: 100%;
 }
 
 .navbar .nav .links a,
@@ -27,7 +26,8 @@ body {
 }
 
 .container {
-  height: 100%;
+  height: 30%;
+  width: 100%;
 }
 
 .row {
@@ -191,8 +191,8 @@ body {
 
 .item h4 {
   font-size: 1.2rem;
-}
-
+} */
+/* 
 .item a {
   text-decoration: none;
   text-align: center;
@@ -249,10 +249,10 @@ body {
   color: #f8f8f8;
   background: #af4448;
 }
-
+/* 
 .alert {
   /* background: #ef9a9a; */
-  width: 400px;
+  /* width: 400px;
   height: 200px;
   border-radius: 3px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
@@ -315,5 +315,4 @@ body {
   grid-gap: 2em;
   grid-template-rows: auto;
   width: 80%;
-  margin: 4em auto;
-}
+  margin: 4em auto; */

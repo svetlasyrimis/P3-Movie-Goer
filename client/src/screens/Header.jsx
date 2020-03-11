@@ -5,7 +5,7 @@ import '../styles/header.css'
 
 
 const authenticatedOptions = (
-  <Navbar>
+  <Navbar className='navbar'>
     <NavLink to="/change-password">Change Password</NavLink>
     <NavLink to="/sign-out">Sign Out</NavLink>
   </Navbar>

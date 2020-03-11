@@ -4,6 +4,7 @@ import Routes from '../routes'
 import Landing from '../screens/Landing'
 import Home from '../screens/Home'
 import Header from '../screens/Header'
+import Footer from './shared/Footer'
 import '../styles/Container.css'
 
 export default class Container extends Component {
@@ -37,7 +38,7 @@ export default class Container extends Component {
     const display = user ? Home : Landing
     return (
       <>
-        <Header user={user}/>
+        <Header user={user} />
         {display}
         <main className="container">
           <Routes
@@ -48,6 +49,7 @@ export default class Container extends Component {
             clearUser={this.clearUser}
           />
         </main>
+        <Footer />
       </>
     )
   }
