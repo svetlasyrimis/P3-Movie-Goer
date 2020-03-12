@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Home from '../screens/Home'
+import ExploreMovies from '../screens/ExploreMovies'
 import Landing from '../screens/Landing'
 import SignIn from '../screens/SignIn'
 import SignOut from '../screens/SignOut'
@@ -12,15 +12,16 @@ import MyMovies from '../screens/MyMovies'
 import ItemCreate from '../screens/ItemCreate'
 import ItemEdit from '../screens/ItemEdit'
 import AuthenticatedRoute from './AuthenticatedRoute'
+import MovieDetail from '../screens/MovieDetail'
 
 
-const Routes = ({ user, items, setUser, clearUser, addItem }) => (
+const Routes = ({ user, items, setUser, clearUser, addItem, movieData }) => (
     <Switch>
         <Route
             exact
             path="/"
-            render={props => (user ? <Home /> : <Landing {...props} items={items} />)}
-        />
+            render={props => (user ? <ExploreMovies {...props} movieData={movieData} /> : <Landing {...props} items={items} />)}
+    />
         <Route
             path="/sign-in"
             render={props => <SignIn {...props} setUser={setUser} />}
@@ -28,8 +29,9 @@ const Routes = ({ user, items, setUser, clearUser, addItem }) => (
         <Route
             path="/sign-up"
             render={props => <SignUp {...props} setUser={setUser} />}
-        />
-        <Route
+    />
+     
+     <Route
             exact
             path="/sign-out"
             render={props => <SignOut {...props} clearUser={clearUser} user={user} />}
@@ -55,9 +57,15 @@ const Routes = ({ user, items, setUser, clearUser, addItem }) => (
         /> */}
         <AuthenticatedRoute
             exact
-            path="/items/:id"
+            path={`/items/:id`}
             user={user}
             render={props => <Item {...props} />}
+    />
+    <AuthenticatedRoute
+            exact
+            path="/:id"
+            user={user}
+            render={props => <MovieDetail {...props} movieData={movieData}  />}
         />
         <AuthenticatedRoute
             exact
