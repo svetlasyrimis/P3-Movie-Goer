@@ -22,6 +22,7 @@ export default class Container extends Component {
     this.state = {
       user: null,
       items: [],//this should be tied to "my movies from the backend"
+      comments: [],//this should be tied to comments from the backend
       explorerMovies: []
     }
   }

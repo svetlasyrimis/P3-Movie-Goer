@@ -16,7 +16,7 @@ const Movie = (props) => {
           <p>{movie.release_date}</p>
           <p>{movie.overview}</p>
       <button>Favorite</button>
-      <Link to={`/${movie.id}`}>
+      <Link to={`movies/${movie.id}`}>
       <button> Show Detail</button>
 
       </Link>
