@@ -62,8 +62,7 @@ const Routes = ({ user, items, setUser, clearUser, addItem, movieData }) => (
             render={props => <Item {...props} />}
     />
     <AuthenticatedRoute
-            exact
-            path="/:id"
+            path="/movies/:id"
             user={user}
             render={props => <MovieDetail {...props} movieData={movieData}  />}
         />
