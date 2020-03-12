@@ -18,9 +18,10 @@ export const getItemById = async id => {
   }
 }
 
-export const createItem = async item => {
+export const createItem = async (id, item) => {
   try {
-    const resp = await api.post("/items", item)
+    const resp = await api.post("/items", id, item)
+
     console.log(resp.data)
     return resp
   } catch (error) {

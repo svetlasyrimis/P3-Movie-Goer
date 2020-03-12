@@ -8,6 +8,8 @@ import Home from '../screens/Home'
 import Header from '../screens/Header'
 import Footer from './shared/Footer'
 import '../styles/Container.css'
+import { verifyToken } from "../services/auth";
+
 
 
 const API_KEY = '981f1b61aa5e31abce190e535142d7e9'
@@ -28,15 +30,18 @@ export default class Container extends Component {
   }
 
   async componentDidMount() {
-    try {
-      const response = await axios.get(explore)
-      console.log(response)
-      this.setState({
-        explorerMovies: response.data.results
-      })
-    }
-    catch (error) {
-      alert("error")
+    const user = await verifyToken();
+    if (user) {
+      try {
+        const response = await axios.get(explore)
+        console.log(response)
+        this.setState({
+          explorerMovies: response.data.results
+        })
+      }
+      catch (error) {
+        alert("error")
+      }
     }
   }
 
