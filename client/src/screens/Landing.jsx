@@ -1,5 +1,5 @@
 import React from 'react'
-import Items from './Items'
+// import Items from './Items'
 import { Link } from 'react-router-dom'
 import '../styles/landing.css'
 
