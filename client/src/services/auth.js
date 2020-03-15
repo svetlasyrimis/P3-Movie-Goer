@@ -16,7 +16,7 @@ const storeToken = (token) => {
 }
 
 export const verifyToken = async () => {
-  debugger;
+  // debugger;
   const token = localStorage.getItem('token');
 
   if (token !== null) {
