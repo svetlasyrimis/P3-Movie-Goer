@@ -7,13 +7,14 @@ import Comment from './Comment'
 
 import ItemCreate from './ItemCreate'
 import Items from './Items'
+import { Link } from 'react-router-dom'
 
 
 
 
 
 const pic = 'https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Forrest_Gump_poster.jpg/220px-Forrest_Gump_poster.jpg'
-import { Link } from 'react-router-dom'
+
 // import Movie from './Movie'
 
 

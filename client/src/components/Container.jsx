@@ -62,10 +62,9 @@ export default class Container extends Component {
     console.log(this.state.explorerMovies)
     console.log('container addComment', this.addComment)
 
-    const { user, items, explorerMovies, comments } = this.state
     // console.log(this.state.explorerMovies)
     
-    const { user, items, explorerMovies } = this.state
+    const { user, items, explorerMovies, comments } = this.state
 
 
     return (
