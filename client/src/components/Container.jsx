@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import { getItems } from '../services/items'
+// import { getItems } from '../services/items'
+// import Landing from '../screens/Landing'
+// import Home from '../screens/Home'
 import Routes from '../routes'
-import Landing from '../screens/Landing'
-import Home from '../screens/Home'
 import Header from '../screens/Header'
 import Footer from './shared/Footer'
 import '../styles/Container.css'
@@ -13,9 +13,8 @@ import { verifyToken } from "../services/auth";
 
 
 const API_KEY = '981f1b61aa5e31abce190e535142d7e9'
-const input = "batman begins"
 const explore = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-const search = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${input}`
+// const search = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${input}`
 
 
 export default class Container extends Component {
@@ -59,7 +58,7 @@ export default class Container extends Component {
   clearUser = () => this.setState({ user: null })
 
   render() {
-    console.log(this.state.explorerMovies)
+    // console.log(this.state.explorerMovies)
     
     const { user, items, explorerMovies } = this.state
 
