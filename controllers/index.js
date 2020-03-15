@@ -63,13 +63,27 @@ const changePassword = async (req, res) => {}
 
 const createMovie = async (req, res) => {
   try {
-    const movie = await new Movie(req.body.movie)
+    const user = await Movie.findById(req.params.id)
+    console.log(req.params.id)
+    const movie = await new Movie(req.body)
     // movie.user_id=req.body.currentUserId
     await movie.save()
     return res.status(201).json(movie)
   } catch (error) {
     console.log(error)
     return res.status(500).json({ error: error.message })
+  }
+}
+
+const verifyUser = (req, res) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    console.log(token);
+    const user = jwt.verify(token, TOKEN_KEY);
+    res.locals = user;
+    res.json({ user: res.locals });
+  } catch (e) {
+    res.status(401).send('Not Authorized');
   }
 }
 
@@ -171,6 +185,7 @@ const getCommentsByMovieId = async (req, res) => {
   
 
 module.exports = {
+  verifyUser,
   signUp,
   signIn,
   changePassword,
