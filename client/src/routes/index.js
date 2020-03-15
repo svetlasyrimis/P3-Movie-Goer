@@ -15,7 +15,7 @@ import AuthenticatedRoute from './AuthenticatedRoute'
 import MovieDetail from '../screens/MovieDetail'
 
 
-const Routes = ({ user, items, setUser, clearUser, addItem, movieData }) => (
+const Routes = ({ user, items, setUser, clearUser, addItem, movieData, addComment, comments }) => (
     <Switch>
         <Route
             exact
@@ -64,7 +64,7 @@ const Routes = ({ user, items, setUser, clearUser, addItem, movieData }) => (
     <AuthenticatedRoute
             path="/movies/:id"
             user={user}
-            render={props => <MovieDetail {...props} movieData={movieData}  />}
+      render={props => <MovieDetail {...props} movieData={movieData} user={user} addComment={addComment} comments={comments}/>}
         />
         <AuthenticatedRoute
             exact
@@ -75,7 +75,7 @@ const Routes = ({ user, items, setUser, clearUser, addItem, movieData }) => (
         <AuthenticatedRoute
             user={user}
             path="/create"
-            render={props => <ItemCreate {...props} addItem={addItem} />}
+      render={props => <ItemCreate {...props} addComment={addComment} />}
         />
     </Switch>
 )

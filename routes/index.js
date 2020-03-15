@@ -14,4 +14,10 @@ router.get("/movies/:id", controllers.getMovieById)
 router.put("/movies/:id", controllers.updateMovie)
 router.delete("/movies/:id", controllers.deleteMovie)
 
+
+router.post("/comments", controllers.createComment)
+router.get("/comments", controllers.getAllComments)
+router.get("/movies/:id/comments", controllers.getCommentsByMovieId)
+
+
 module.exports = router
