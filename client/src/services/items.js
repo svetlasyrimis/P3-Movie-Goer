@@ -47,6 +47,15 @@ export const deleteItem = async id => {
   }
 }
 
+export const getMoviesUser = async id => {
+  try {
+    const resp = await api.post(`/items`)
+    return resp.data
+  } catch (error) {
+    throw error
+  }
+}
+
 //export get a movie from the api function
 
 //export post a movie from the api function
