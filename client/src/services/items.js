@@ -18,9 +18,10 @@ export const getItemById = async id => {
   }
 }
 
-export const createItem = async item => {
+export const createItem = async (id, item) => {
   try {
-    const resp = await api.post("/items", item)
+    const resp = await api.post("/items", id, item)
+
     console.log(resp.data)
     return resp
   } catch (error) {
@@ -40,6 +41,15 @@ export const updateItem = async (id, item) => {
 export const deleteItem = async id => {
   try {
     const resp = await api.delete(`/items/${id}`)
+    return resp.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const getMoviesUser = async id => {
+  try {
+    const resp = await api.post(`/items`)
     return resp.data
   } catch (error) {
     throw error
