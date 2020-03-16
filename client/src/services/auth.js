@@ -1,45 +1,44 @@
-import api from './apiConfig'
+import api from "./apiConfig"
 
 export const signUp = async credentials => {
   try {
-    const resp = await api.post('/sign-up', credentials)
-    localStorage.setItem('token', resp.data.token)
+    const resp = await api.post("/sign-up", credentials)
+    localStorage.setItem("token", resp.data.token)
     return resp.data
   } catch (error) {
     throw error
   }
 }
 
-const storeToken = (token) => {
-  localStorage.setItem('token', token);
-  api.defaults.headers.common.authorization = `Bearer ${token}`;
+const storeToken = token => {
+  localStorage.setItem("token", token)
+  api.defaults.headers.common.authorization = `Bearer ${token}`
 }
 
 export const verifyToken = async () => {
-  // debugger;
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token")
 
   if (token !== null) {
     try {
-      const resp = await api.get('/verify', {
+      const resp = await api.get("/verify", {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      });
-      storeToken(token);
+      })
+      //storeToken(token)
 
-      return resp.data.user;
+      return resp.data.user
     } catch (e) {
-      console.log(e.message);
-      console.log('invalid token');
+      console.log(e.message)
+      console.log("invalid token")
     }
   }
-};
+}
 
 export const signInUser = async credentials => {
   try {
-    const resp = await api.post('/sign-in', credentials)
-    localStorage.setItem('token', resp.data.token)
+    const resp = await api.post("/sign-in", credentials)
+    localStorage.setItem("token", resp.data.token)
     return resp.data
   } catch (error) {
     throw error
@@ -57,7 +56,7 @@ export const signOut = async user => {
 
 export const changePassword = async (passwords, user) => {
   try {
-    const resp = await api.post('/')
+    const resp = await api.post("/")
     return resp.data
   } catch (error) {
     throw error

@@ -9,7 +9,8 @@ const main = async () => {
   const users = [...Array(100)].map(user => ({
     username: faker.name.firstName(),
     email: faker.internet.email(),
-    password_digest: faker.random.uuid()
+    password_digest: faker.random.uuid(),
+    movies: [{ type: String, required: true }]
   }))
 
   await User.insertMany(users)
