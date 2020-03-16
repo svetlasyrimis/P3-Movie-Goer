@@ -18,4 +18,10 @@ router.get("/users/:user_id/items", controllers.getMoviesFromUser)
 // router.get("/users/:id/items", controllers.getItemsFromUser)
 router.get("/verify", controllers.verifyUser)
 
+
+router.post("/comments", controllers.createComment)
+router.get("/comments", controllers.getAllComments)
+router.get("/movies/:id/comments", controllers.getCommentsByMovieId)
+
+
 module.exports = router

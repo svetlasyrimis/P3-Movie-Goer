@@ -1,28 +1,27 @@
 import React from 'react'
-import Layout from '../components/shared/Layout'
-import { Link } from 'react-router-dom'
-import '../styles/explore.css'
+// import Layout from '../components/shared/Layout'
+// import '../styles/explore.css'
 import Movie from './Movie'
+import SearchFunction from '../components/shared/Search'
 
 
 const ExploreMovies = ({ movieData }) => {
 
   const movies = movieData.map((movie, index) => {
     return (
-      <Movie movie={movie} key={index}/>
-      
+      <Movie movie={movie} key={index} />
     )
-   
   })
 
   return (
-    <Layout>
+    <>
+      {/* <Layout> */}
       <h1>Explore Movies</h1>
+      <SearchFunction/>
       {movies}
-  </Layout>
-    
+      {/* </Layout> */}
+    </>
   )
-
 }
 
 export default ExploreMovies
