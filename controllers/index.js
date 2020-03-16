@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const mongoose = require("mongoose")
 const User = require("../models/user")
 const Movie = require("../models/movie")
 const db = require("../db")
@@ -62,27 +63,25 @@ const changePassword = async (req, res) => {}
 
 const createMovie = async (req, res) => {
   try {
-    const user = await Movie.findById(req.params.id)
-    console.log(req.params.id)
-    const movie = await new Movie(req.body)
+    let movie = await new Movie(req.body)
     // movie.user_id=req.body.currentUserId
-    await movie.save()
+    movie = await movie.save()
+    await User.updateOne({ _id: req.user.id }, { $push: { movies: movie._id } })
     return res.status(201).json(movie)
   } catch (error) {
-    console.log(error)
     return res.status(500).json({ error: error.message })
   }
 }
 
 const verifyUser = (req, res) => {
   try {
-    const token = req.headers.authorization.split(" ")[1];
-    console.log(token);
-    const user = jwt.verify(token, TOKEN_KEY);
-    res.locals = user;
-    res.json({ user: res.locals });
+    const token = req.headers.authorization.split(" ")[1]
+    console.log(token)
+    const user = jwt.verify(token, TOKEN_KEY)
+    res.locals = user
+    res.json({ user: res.locals })
   } catch (e) {
-    res.status(401).send('Not Authorized');
+    res.status(401).send("Not Authorized")
   }
 }
 
@@ -138,6 +137,33 @@ const deleteMovie = async (req, res) => {
   }
 }
 
+const getMoviesFromUser = async (req, res) => {
+  debugger
+  try {
+    const { user_id } = req.params
+    const movies = await Movie.find({ user_id: user_id })
+    if (movies) {
+      return res.status(200).json({ movies })
+    }
+    return res.status(404).send("User with this ID does not exist")
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
+const getMovieByUserId = async (req, res) => {
+  try {
+    const { user_id, movie_id } = req.params
+    const movie = await Movie.findOne({ user_id: user_id, _id: movie_id })
+    if (item) {
+      return res.status(200).json({ movie })
+    }
+    return res.status(404).send("Movie with specified ID does not exist")
+  } catch (error) {
+    return res.status(404).send("Movie with specified ID does not exist.")
+  }
+}
+
 module.exports = {
   verifyUser,
   signUp,
@@ -147,5 +173,7 @@ module.exports = {
   getAllMovie,
   getMovieById,
   updateMovie,
-  deleteMovie
+  deleteMovie,
+  getMoviesFromUser,
+  getMovieByUserId
 }
